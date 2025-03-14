@@ -141,3 +141,38 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', fun
         showFloor(floor);
     }
 });
+
+// ✅ Fullscreen Toggle Function
+function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
+        });
+    } else {
+        document.exitFullscreen();
+    }
+}
+
+// ✅ Responsive Layout Adjustments
+function adjustLayout() {
+    let screenWidth = window.innerWidth;
+    let screenHeight = window.innerHeight;
+    let floorSelector = document.querySelector(".floor-selector");
+    let mapContainer = document.querySelector(".map-container");
+
+    if (screenWidth > screenHeight) {
+        // Landscape Mode (TV)
+        floorSelector.style.flexDirection = "column"; // Stack buttons vertically
+        floorSelector.style.width = "15%"; // Adjust width
+        mapContainer.style.width = "80%"; // Ensure the map is large
+    } else {
+        // Portrait Mode (TV-like Phone View)
+        floorSelector.style.flexDirection = "row"; // Normal layout for vertical
+        floorSelector.style.width = "100%";
+        mapContainer.style.width = "100%";
+    }
+}
+
+// Run layout adjustment on resize
+window.addEventListener("resize", adjustLayout);
+window.addEventListener("load", adjustLayout);
