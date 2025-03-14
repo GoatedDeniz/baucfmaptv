@@ -325,4 +325,19 @@ button[data-floor="9"].active { background: #FFD022; } /* Yellow */
     button:hover {
         background: #555;
     }
+    /* Original .floor-selector rules remain above */
+
+/* --- New Override for Floor Selector Positioning --- */
+.floor-selector {
+    position: fixed;         /* Fixes the container relative to the viewport */
+    top: 50%;                /* Positions vertically at the midpoint */
+    left: 10px;              /* Positions near the left edge (adjust as needed) */
+    transform: translateY(-50%); /* Centers the container vertically */
+    flex-direction: column;  /* Stacks buttons vertically */
+    align-items: flex-start; /* Aligns buttons to the left within the container */
+    margin: 0;               /* Remove default margins */
+    padding: 10px;           /* Optional padding for spacing */
+    gap: 8px;                /* Maintains spacing between buttons */
+    z-index: 1000;           /* Ensures the buttons appear above other elements */}
+    
 }
