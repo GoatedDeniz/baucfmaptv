@@ -148,31 +148,28 @@ button.active {
     transform: scale(1.05);
 }
 
-/* ✅ Floor Selector - Ensures Even Button Distribution */
+/* Updated Floor Selector Styling */
 .floor-selector {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, auto); /* Two columns */
     gap: 8px;
-    margin-top: 20px;
-    max-width: 700px; /* Prevents excessive row breaking */
-    padding: 0 15px;
-    margin-left: auto;
-    margin-right: auto;
+    position: absolute;
+    left: 20px; /* Move to the left side */
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
 }
 
-/* ✅ Floor Buttons - Prevents Size Growth */
+/* Ensuring Floor Buttons Keep Their Original Style */
 button {
     flex: 1 1 auto;
     width: auto;
-    min-width: 80px; /* Slightly reduced */
-    max-width: 110px; /* Prevents excessive growth */
-    padding: 10px; /* Reduced padding to fit better */
+    min-width: 90px;
+    max-width: 120px;
+    padding: 12px;
     border: 1px solid #0E3192;
     background: white;
     cursor: pointer;
-    font-size: 15px; /* Slightly smaller text */
+    font-size: 16px;
     border-radius: 8px;
     text-align: center;
     font-weight: bold;
@@ -180,28 +177,28 @@ button {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* ✅ Default Hover Effect */
+/* Maintain Hover Effect */
 button:hover {
     background: #ddd;
 }
 
-/* ✅ Active Button Colors */
+/* Keep Active Button Colors */
 button.active {
     color: white !important;
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
-/* Floor-Specific Active Button Colors */
-button[data-floor="-2"].active { background: #2D3F3E; } /* Black */
-button[data-floor="0"].active { background: #000000; } /* Black */
-button[data-floor="2"].active { background: #E888B7; } /* Pink */
-button[data-floor="3"].active { background: #618E3F; } /* Green */
-button[data-floor="4"].active { background: #2D54A1; } /* Blue */
-button[data-floor="5"].active { background: #B6373D; } /* Red */
-button[data-floor="6"].active { background: #764695; } /* Purple */
-button[data-floor="7"].active { background: #96D6D8; } /* Cyan */
-button[data-floor="8"].active { background: #F08211; } /* Orange */
-button[data-floor="9"].active { background: #FFD022; } /* Yellow */
+/* Ensure Floor-Specific Active Button Colors Stay Intact */
+button[data-floor="-2"].active { background: #2D3F3E; }
+button[data-floor="0"].active { background: #000000; }
+button[data-floor="2"].active { background: #E888B7; }
+button[data-floor="3"].active { background: #618E3F; }
+button[data-floor="4"].active { background: #2D54A1; }
+button[data-floor="5"].active { background: #B6373D; }
+button[data-floor="6"].active { background: #764695; }
+button[data-floor="7"].active { background: #96D6D8; }
+button[data-floor="8"].active { background: #F08211; }
+button[data-floor="9"].active { background: #FFD022; }
 
 /* ✅ Spacing for Floor Map */
 .map-container {
@@ -325,19 +322,4 @@ button[data-floor="9"].active { background: #FFD022; } /* Yellow */
     button:hover {
         background: #555;
     }
-    /* Original .floor-selector rules remain above */
-
-/* --- New Override for Floor Selector Positioning --- */
-.floor-selector {
-    position: fixed;         /* Fixes the container relative to the viewport */
-    top: 50%;                /* Positions vertically at the midpoint */
-    left: 10px;              /* Positions near the left edge (adjust as needed) */
-    transform: translateY(-50%); /* Centers the container vertically */
-    flex-direction: column;  /* Stacks buttons vertically */
-    align-items: flex-start; /* Aligns buttons to the left within the container */
-    margin: 0;               /* Remove default margins */
-    padding: 10px;           /* Optional padding for spacing */
-    gap: 8px;                /* Maintains spacing between buttons */
-    z-index: 1000;           /* Ensures the buttons appear above other elements */}
-    
 }
