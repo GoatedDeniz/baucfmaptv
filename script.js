@@ -140,19 +140,4 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', fun
         let floor = activeFloor.getAttribute("data-floor");
         showFloor(floor);
     }
-// Developer Info Plugin Toggle
-document.getElementById("infoIcon").addEventListener("click", function () {
-    let infoBox = document.getElementById("devInfoText");
-    infoBox.style.display = infoBox.style.display === "block" ? "none" : "block";
-});
-
-// Hide Info Box When Clicking Outside
-document.addEventListener("click", function (event) {
-    let infoBox = document.getElementById("devInfoText");
-    let infoIcon = document.getElementById("infoIcon");
-    if (event.target !== infoBox && event.target !== infoIcon) {
-        infoBox.style.display = "none";
-    }
-});
-
 });
