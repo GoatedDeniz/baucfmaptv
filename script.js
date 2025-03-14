@@ -133,6 +133,58 @@ document.getElementById("searchInput").addEventListener("input", function () {
     updateSuggestions(this.value.toUpperCase().trim());
 });
 
+// Get elements
+const infoIcon = document.getElementById("infoIcon");
+const infoContainer = document.querySelector(".info-container");
+
+// Function to toggle the info box
+function toggleInfo() {
+    let infoText = document.getElementById("infoText");
+    let infoIcon = document.getElementById("infoIcon");
+
+    // Toggle visibility of info box
+    if (infoText.style.display === "block") {
+        infoText.style.display = "none";
+    } else {
+        infoText.style.display = "block";
+    }
+
+    // Add grow-shrink animation every time it's clicked
+    infoIcon.classList.add("animate");
+    setTimeout(() => {
+        infoIcon.classList.remove("animate");
+    }, 200); // Remove animation class after animation completes
+
+    // ✅ Check for dark mode and switch icon accordingly
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        infoIcon.src = "info-dark.svg"; // Dark mode icon
+    } else {
+        infoIcon.src = "info.svg"; // Light mode icon
+    }
+}
+
+// ✅ Ensure correct icon loads on page load based on dark mode
+window.addEventListener("DOMContentLoaded", function() {
+    let infoIcon = document.getElementById("infoIcon");
+
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        infoIcon.src = "info-dark.svg";
+    } else {
+        infoIcon.src = "info.svg";
+    }
+});
+
+// ✅ Ensure correct icon loads on page load based on dark mode
+window.addEventListener("DOMContentLoaded", function() {
+    let infoIcon = document.getElementById("infoIcon");
+
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        infoIcon.src = "info-dark.svg";
+    } else {
+        infoIcon.src = "info.svg";
+    }
+});
+
 // Detect dark mode changes and update the floor map dynamically
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
     let activeFloor = document.querySelector(".floor-selector button.active");
@@ -141,38 +193,3 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', fun
         showFloor(floor);
     }
 });
-
-// ✅ Fullscreen Toggle Function
-function toggleFullScreen() {
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(err => {
-            console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
-        });
-    } else {
-        document.exitFullscreen();
-    }
-}
-
-// ✅ Responsive Layout Adjustments
-function adjustLayout() {
-    let screenWidth = window.innerWidth;
-    let screenHeight = window.innerHeight;
-    let floorSelector = document.querySelector(".floor-selector");
-    let mapContainer = document.querySelector(".map-container");
-
-    if (screenWidth > screenHeight) {
-        // Landscape Mode (TV)
-        floorSelector.style.flexDirection = "column"; // Stack buttons vertically
-        floorSelector.style.width = "15%"; // Adjust width
-        mapContainer.style.width = "80%"; // Ensure the map is large
-    } else {
-        // Portrait Mode (TV-like Phone View)
-        floorSelector.style.flexDirection = "row"; // Normal layout for vertical
-        floorSelector.style.width = "100%";
-        mapContainer.style.width = "100%";
-    }
-}
-
-// Run layout adjustment on resize
-window.addEventListener("resize", adjustLayout);
-window.addEventListener("load", adjustLayout);

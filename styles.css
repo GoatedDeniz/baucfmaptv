@@ -9,7 +9,7 @@ body {
     transition: background 0.3s, color 0.3s;
 }
 
-/* ✅ Enlarged Header for TV Display */
+/* ✅ Header Image Placeholder - Keeps Original Size */
 header {
     width: 100%;
     height: auto;
@@ -17,25 +17,24 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: none !important;
-    padding: 30px 0; /* Adjusted padding for better spacing */
+    background: none !important; /* ✅ Ensures no background */
+    padding: 0;
 }
 
 /* Fixes any remaining dark mode background */
 @media (prefers-color-scheme: dark) {
     header {
-        background: none !important;
+        background: none !important; /* ✅ Forces dark mode to not add background */
     }
 }
 
-/* ✅ Enlarged Header Image */
 #headerImage {
-    height: 300px; /* Increased for large display */
-    width: auto;
-    max-width: 90%;
-    margin-top: 30px;
-    background: none;
-    border: none;
+    height: 80px; /* Keep the same height */
+    width: auto; /* Maintain aspect ratio */
+    max-width: 90%; /* Adjusts dynamically */
+    margin-top: 15px; /* Moves the image down */
+    background: none; /* Ensures no background */
+    border: none; /* Removes any border */
 }
 
 /* Ensures no border or background in dark mode */
@@ -46,60 +45,59 @@ header {
     }
 }
 
-/* ✅ Enlarged Search Bar for Easy Touch Input */
+/* ✅ Center the Search Bar */
 .search-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 20px;
     position: relative;
 }
 
-/* ✅ Bigger Search Input */
+/* ✅ Improved Search Bar Styling */
 #searchInput {
-    padding: 35px;
-    font-size: 50px;
-    border: 3px solid #0E3192;
-    border-radius: 15px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #0E3192;
+    border-radius: 8px;
     background: white;
-    width: 60%;
-    max-width: 1400px;
+    width: 80%;
+    max-width: 320px;
     text-align: left;
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
 }
 
 #searchInput:focus {
     border-color: #0E3192;
     outline: none;
-    box-shadow: 4px 4px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* ✅ Bigger Auto-Suggestions */
+/* ✅ Auto-Suggestions Styling */
 #suggestions {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    width: 60%;
-    max-width: 1400px;
+    width: 80%;
+    max-width: 320px;
     background: white;
-    border: 3px solid #0E3192;
+    border: 1px solid #0E3192;
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
     display: none;
     z-index: 1000;
-    border-radius: 15px;
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 #suggestions li {
-    padding: 25px;
-    font-size: 45px;
+    padding: 10px;
     cursor: pointer;
-    border-bottom: 3px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 
 #suggestions li:last-child {
@@ -116,83 +114,27 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 25px;
-    margin-top: 50px;
+    gap: 10px;
+    margin-top: 20px;
     max-width: 100%;
-    padding: 0 50px;
+    padding: 0 15px;
 }
 
-/* ✅ Enlarged Buttons for Touch */
 button {
     flex: 1 1 auto;
     width: auto;
-    min-width: 300px;
-    max-width: 400px;
-    padding: 35px;
-    font-size: 55px;
-    border: 3px solid #0E3192;
+    min-width: 90px;
+    max-width: 120px;
+    padding: 12px;
+    border: 1px solid #0E3192;
     background: white;
     cursor: pointer;
-    border-radius: 15px;
+    font-size: 16px;
+    border-radius: 8px;
     text-align: center;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* ✅ Default Hover Effect */
-button:hover {
-    background: #ddd;
-}
-
-/* ✅ Active Button Colors */
-button.active {
-    color: white !important;
-    transform: scale(1.08);
-}
-
-/* ✅ Floor-Specific Active Button Colors */
-button[data-floor="-2"].active { background: #2D3F3E; }
-button[data-floor="0"].active { background: #000000; }
-button[data-floor="2"].active { background: #E888B7; }
-button[data-floor="3"].active { background: #618E3F; }
-button[data-floor="4"].active { background: #2D54A1; }
-button[data-floor="5"].active { background: #B6373D; }
-button[data-floor="6"].active { background: #764695; }
-button[data-floor="7"].active { background: #96D6D8; }
-button[data-floor="8"].active { background: #F08211; }
-button[data-floor="9"].active { background: #FFD022; }
-
-/* ✅ Floor Selector - Ensures Even Button Distribution */
-.floor-selector {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    margin-top: 50px;
-    max-width: 80%;
-    padding: 0 50px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* ✅ Floor Buttons - Prevents Size Growth */
-button {
-    flex: 1 1 auto;
-    width: auto;
-    min-width: 250px;
-    max-width: 350px;
-    padding: 30px;
-    font-size: 45px;
-    border: 3px solid #0E3192;
-    background: white;
-    cursor: pointer;
-    border-radius: 15px;
-    text-align: center;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* ✅ Default Hover Effect */
@@ -206,242 +148,137 @@ button.active {
     transform: scale(1.05);
 }
 
-/* ✅ Floor Map Area */
+/* ✅ Floor Selector - Ensures Even Button Distribution */
+.floor-selector {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    max-width: 700px; /* Prevents excessive row breaking */
+    padding: 0 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ✅ Floor Buttons - Prevents Size Growth */
+button {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 80px; /* Slightly reduced */
+    max-width: 110px; /* Prevents excessive growth */
+    padding: 10px; /* Reduced padding to fit better */
+    border: 1px solid #0E3192;
+    background: white;
+    cursor: pointer;
+    font-size: 15px; /* Slightly smaller text */
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Default Hover Effect */
+button:hover {
+    background: #ddd;
+}
+
+/* ✅ Active Button Colors */
+button.active {
+    color: white !important;
+    transform: scale(1.03);
+}
+
+/* Floor-Specific Active Button Colors */
+button[data-floor="-2"].active { background: #2D3F3E; } /* Black */
+button[data-floor="0"].active { background: #000000; } /* Black */
+button[data-floor="2"].active { background: #E888B7; } /* Pink */
+button[data-floor="3"].active { background: #618E3F; } /* Green */
+button[data-floor="4"].active { background: #2D54A1; } /* Blue */
+button[data-floor="5"].active { background: #B6373D; } /* Red */
+button[data-floor="6"].active { background: #764695; } /* Purple */
+button[data-floor="7"].active { background: #96D6D8; } /* Cyan */
+button[data-floor="8"].active { background: #F08211; } /* Orange */
+button[data-floor="9"].active { background: #FFD022; } /* Yellow */
+
+/* ✅ Spacing for Floor Map */
 .map-container {
     position: relative;
     display: inline-block;
-    margin-top: 50px;
+    margin-top: 20px; /* Increased space */
 }
 
-/* ✅ Enlarged Floor Map */
+/* ✅ Floor Map Styling */
 #floorMap {
     max-width: 90%;
     height: auto;
-    border: none;
-    border-radius: 0;
+    border: none; 
+    border-radius: 0; 
 }
 
-/* Reset default styles */
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: white;
+/* ✅ Info Icon - Positioned Bottom Left */
+.info-container {
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* ✅ Default Icon Styling */
+.info-icon {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.15s ease-in-out; /* ✅ Smooth animation */
+}
+
+/* Smooth grow animation on click */
+@keyframes growAndShrink {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); } /* Slightly grows */
+    100% { transform: scale(1); } /* Returns to original size */
+}
+
+/* ✅ Info Text - Supports Multiple Lines & Fixes Display */
+.info-text {
+    display: none; /* ✅ Hides by default */
+    position: absolute;
+    bottom: 45px;
+    left: 35px;
+    background: white;
     color: black;
-    margin: 0;
-    padding: 0;
-    transition: background 0.3s, color 0.3s;
-}
-
-/* ✅ Enlarged Header for TV Display */
-header {
-    width: 100%;
-    height: auto;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: none !important;
-    padding: 30px 0; /* Adjusted padding for better spacing */
-}
-
-/* Fixes any remaining dark mode background */
-@media (prefers-color-scheme: dark) {
-    header {
-        background: none !important;
-    }
-}
-
-/* ✅ Enlarged Header Image */
-#headerImage {
-    height: 300px; /* Increased for large display */
-    width: auto;
-    max-width: 90%;
-    margin-top: 30px;
-    background: none;
-    border: none;
-}
-
-/* Ensures no border or background in dark mode */
-@media (prefers-color-scheme: dark) {
-    #headerImage {
-        background: none !important;
-        border: none !important;
-    }
-}
-
-/* ✅ Enlarged Search Bar for Easy Touch Input */
-.search-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 50px;
-    position: relative;
-}
-
-/* ✅ Bigger Search Input */
-#searchInput {
-    padding: 35px;
-    font-size: 50px;
-    border: 3px solid #0E3192;
-    border-radius: 15px;
-    background: white;
-    width: 60%;
-    max-width: 1400px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    width: 220px; /* ✅ Adjust width */
+    max-width: 250px; /* ✅ Prevents it from becoming too wide */
+    white-space: normal; /* ✅ Allows multi-line text */
+    word-wrap: break-word; /* ✅ Ensures long words wrap properly */
     text-align: left;
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-}
-
-#searchInput:focus {
-    border-color: #0E3192;
-    outline: none;
-    box-shadow: 4px 4px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* ✅ Bigger Auto-Suggestions */
-#suggestions {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    width: 60%;
-    max-width: 1400px;
-    background: white;
-    border: 3px solid #0E3192;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    display: none;
     z-index: 1000;
-    border-radius: 15px;
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-#suggestions li {
-    padding: 25px;
-    font-size: 45px;
-    cursor: pointer;
-    border-bottom: 3px solid #ccc;
+/* ✅ Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .info-text {
+        background: #222;
+        color: white;
+        box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.1);
+    }
 }
 
-#suggestions li:last-child {
-    border-bottom: none;
+/* ✅ Show Info Text when Active */
+.info-container.active .info-text {
+    display: block;
 }
 
-#suggestions li:hover {
-    background: lightgray;
-}
-
-/* ✅ Improved Floor Buttons */
-.floor-selector {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    margin-top: 50px;
-    max-width: 100%;
-    padding: 0 50px;
-}
-
-/* ✅ Enlarged Buttons for Touch */
-button {
-    flex: 1 1 auto;
-    width: auto;
-    min-width: 300px;
-    max-width: 400px;
-    padding: 35px;
-    font-size: 55px;
-    border: 3px solid #0E3192;
-    background: white;
-    cursor: pointer;
-    border-radius: 15px;
-    text-align: center;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* ✅ Default Hover Effect */
-button:hover {
-    background: #ddd;
-}
-
-/* ✅ Active Button Colors */
-button.active {
-    color: white !important;
-    transform: scale(1.08);
-}
-
-/* ✅ Floor-Specific Active Button Colors */
-button[data-floor="-2"].active { background: #2D3F3E; }
-button[data-floor="0"].active { background: #000000; }
-button[data-floor="2"].active { background: #E888B7; }
-button[data-floor="3"].active { background: #618E3F; }
-button[data-floor="4"].active { background: #2D54A1; }
-button[data-floor="5"].active { background: #B6373D; }
-button[data-floor="6"].active { background: #764695; }
-button[data-floor="7"].active { background: #96D6D8; }
-button[data-floor="8"].active { background: #F08211; }
-button[data-floor="9"].active { background: #FFD022; }
-
-/* ✅ Floor Selector - Ensures Even Button Distribution */
-.floor-selector {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    margin-top: 50px;
-    max-width: 80%;
-    padding: 0 50px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* ✅ Floor Buttons - Prevents Size Growth */
-button {
-    flex: 1 1 auto;
-    width: auto;
-    min-width: 250px;
-    max-width: 350px;
-    padding: 30px;
-    font-size: 45px;
-    border: 3px solid #0E3192;
-    background: white;
-    cursor: pointer;
-    border-radius: 15px;
-    text-align: center;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* ✅ Default Hover Effect */
-button:hover {
-    background: #ddd;
-}
-
-/* ✅ Active Button Colors */
-button.active {
-    color: white !important;
-    transform: scale(1.05);
-}
-
-/* ✅ Floor Map Area */
-.map-container {
-    position: relative;
-    display: inline-block;
-    margin-top: 50px;
-}
-
-/* ✅ Enlarged Floor Map */
-#floorMap {
-    max-width: 90%;
-    height: auto;
-    border: none;
-    border-radius: 0;
+/* Apply animation class dynamically */
+.info-icon.animate {
+    animation: growAndShrink 0.2s ease-out;
 }
 
 /* ✅ Dark Mode Styles */
@@ -458,17 +295,17 @@ button.active {
     #searchInput {
         background: #333;
         color: white;
-        border: 3px solid #777;
+        border: 1px solid #777;
     }
 
     #suggestions {
         background: #222;
-        border: 3px solid #555;
+        border: 1px solid #555;
     }
 
     #suggestions li {
         color: white;
-        border-bottom: 3px solid #444;
+        border-bottom: 1px solid #444;
     }
 
     #suggestions li:last-child {
@@ -482,53 +319,7 @@ button.active {
     button {
         background: #333;
         color: white;
-        border: 3px solid #555;
-    }
-
-    button:hover {
-        background: #555;
-    }
-}
-
-/* ✅ Dark Mode Styles */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #121212;
-        color: white;
-    }
-
-    header {
-        background: #1f1f1f;
-    }
-
-    #searchInput {
-        background: #333;
-        color: white;
-        border: 3px solid #777;
-    }
-
-    #suggestions {
-        background: #222;
-        border: 3px solid #555;
-    }
-
-    #suggestions li {
-        color: white;
-        border-bottom: 3px solid #444;
-    }
-
-    #suggestions li:last-child {
-        border-bottom: none;
-    }
-
-    #suggestions li:hover {
-        background: #444;
-    }
-
-    button {
-        background: #333;
-        color: white;
-        border: 3px solid #555;
+        border: 1px solid #555;
     }
 
     button:hover {
