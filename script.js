@@ -16,6 +16,11 @@ const floorColors = {
     "5": "#B6373D", "6": "#764695", "7": "#96D6D8", "8": "#F08211", "9": "#FFD022"
 };
 
+// Function to check if dark mode is enabled
+function isDarkMode() {
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
 // Function to convert classroom names to valid file format
 function formatClassroomName(classroom) {
     return classroom.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -25,17 +30,20 @@ function formatClassroomName(classroom) {
 function showFloor(floor, highlight = null) {
     let floorMap = document.getElementById("floorMap");
 
+    // Check if dark mode is enabled
+    let darkModeSuffix = isDarkMode() ? "-dark" : "";
+
     // Determine the correct file to load
-    let baseFileName = `floor-${floor}`;
+    let baseFileName = `floor-${floor}${darkModeSuffix}`;
     let fileToLoad = highlight ? `${baseFileName}.${formatClassroomName(highlight)}.svg` : `${baseFileName}.svg`;
 
     // Load SVG from GitHub raw link
     const svgUrl = `https://raw.githubusercontent.com/GoatedDeniz/baucfmap/main/${fileToLoad}`;
-    
+
     floorMap.src = svgUrl;
-    floorMap.onerror = function() {
+    floorMap.onerror = function () {
         this.onerror = null; // Prevent infinite loop if fallback also fails
-        this.src = `https://raw.githubusercontent.com/GoatedDeniz/baucfmap/main/${baseFileName}.svg`;
+        this.src = `https://raw.githubusercontent.com/GoatedDeniz/baucfmap/main/floor-${floor}.svg`; // Default to light mode if dark mode file is missing
     };
 
     // Remove "active" class from all buttons
@@ -65,10 +73,10 @@ function showFloor(floor, highlight = null) {
 }
 
 // Function to handle search
-document.getElementById("searchInput").addEventListener("keydown", function(event) {
+document.getElementById("searchInput").addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         let query = this.value.toUpperCase().trim();
-        
+
         if (classrooms[query]) {
             showFloor(classrooms[query], query); // Switch to highlighted floor plan
             this.value = ""; // Clear search input
@@ -90,12 +98,12 @@ function updateSuggestions(query) {
     }
 
     let matched = Object.keys(classrooms).filter(classroom => classroom.includes(query));
-    
+
     if (matched.length > 0) {
         matched.forEach(classroom => {
             let suggestion = document.createElement("li");
             suggestion.textContent = classroom;
-            suggestion.onclick = function() {
+            suggestion.onclick = function () {
                 document.getElementById("searchInput").value = classroom;
                 showFloor(classrooms[classroom], classroom); // Show highlighted version
                 hideSuggestions();
@@ -114,13 +122,37 @@ function hideSuggestions() {
 }
 
 // Hide suggestions when clicking outside the search bar
-document.addEventListener("click", function(event) {
+document.addEventListener("click", function (event) {
     if (!event.target.closest(".search-container")) {
         hideSuggestions();
     }
 });
 
 // Listen for input changes to update suggestions dynamically
-document.getElementById("searchInput").addEventListener("input", function() {
+document.getElementById("searchInput").addEventListener("input", function () {
     updateSuggestions(this.value.toUpperCase().trim());
+});
+
+// Detect dark mode changes and update the floor map dynamically
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+    let activeFloor = document.querySelector(".floor-selector button.active");
+    if (activeFloor) {
+        let floor = activeFloor.getAttribute("data-floor");
+        showFloor(floor);
+    }
+// Developer Info Plugin Toggle
+document.getElementById("infoIcon").addEventListener("click", function () {
+    let infoBox = document.getElementById("devInfoText");
+    infoBox.style.display = infoBox.style.display === "block" ? "none" : "block";
+});
+
+// Hide Info Box When Clicking Outside
+document.addEventListener("click", function (event) {
+    let infoBox = document.getElementById("devInfoText");
+    let infoIcon = document.getElementById("infoIcon");
+    if (event.target !== infoBox && event.target !== infoIcon) {
+        infoBox.style.display = "none";
+    }
+});
+
 });
