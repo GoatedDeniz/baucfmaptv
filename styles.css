@@ -45,30 +45,30 @@ header {
     }
 }
 
-/* Move Search Bar to Bottom */
+/* ✅ Center the Search Bar */
 .search-container {
-    position: absolute;
-    bottom: 20px; /* Adjust this value to change the distance from the bottom */
-    left: 50%;
-    transform: translateX(-50%); /* Center it horizontally */
-    width: 80%;
-    max-width: 400px; /* Keep it at a reasonable width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
 }
 
-/* Ensure Search Bar Styling Stays the Same */
+/* ✅ Improved Search Bar Styling */
 #searchInput {
     padding: 12px;
     font-size: 16px;
     border: 1px solid #0E3192;
     border-radius: 8px;
     background: white;
-    width: 100%;
+    width: 80%;
+    max-width: 320px;
     text-align: left;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
 }
 
-/* Maintain Hover and Focus Effects */
 #searchInput:focus {
     border-color: #0E3192;
     outline: none;
@@ -108,29 +108,18 @@ header {
     background: lightgray;
 }
 
-/* ✅ Default Hover Effect */
-button:hover {
-    background: #ddd;
-}
-
-/* ✅ Active Button Colors */
-button.active {
-    color: white !important;
-    transform: scale(1.05);
-}
-
-/* Updated Floor Selector Styling */
+/* ✅ Improved Floor Buttons */
 .floor-selector {
-    display: grid;
-    grid-template-columns: repeat(2, auto); /* Two columns */
-    gap: 8px;
-    position: absolute;
-    left: 20px; /* Move to the left side */
-    top: 50%;
-    transform: translateY(-50%); /* Center vertically */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    max-width: 100%;
+    padding: 0 15px;
 }
 
-/* Ensuring Floor Buttons Keep Their Original Style */
 button {
     flex: 1 1 auto;
     width: auto;
@@ -148,28 +137,71 @@ button {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Maintain Hover Effect */
+/* ✅ Default Hover Effect */
 button:hover {
     background: #ddd;
 }
 
-/* Keep Active Button Colors */
+/* ✅ Active Button Colors */
 button.active {
     color: white !important;
     transform: scale(1.05);
 }
 
-/* Ensure Floor-Specific Active Button Colors Stay Intact */
-button[data-floor="-2"].active { background: #2D3F3E; }
-button[data-floor="0"].active { background: #000000; }
-button[data-floor="2"].active { background: #E888B7; }
-button[data-floor="3"].active { background: #618E3F; }
-button[data-floor="4"].active { background: #2D54A1; }
-button[data-floor="5"].active { background: #B6373D; }
-button[data-floor="6"].active { background: #764695; }
-button[data-floor="7"].active { background: #96D6D8; }
-button[data-floor="8"].active { background: #F08211; }
-button[data-floor="9"].active { background: #FFD022; }
+/* ✅ Floor Selector - Ensures Even Button Distribution */
+.floor-selector {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    max-width: 700px; /* Prevents excessive row breaking */
+    padding: 0 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ✅ Floor Buttons - Prevents Size Growth */
+button {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 80px; /* Slightly reduced */
+    max-width: 110px; /* Prevents excessive growth */
+    padding: 10px; /* Reduced padding to fit better */
+    border: 1px solid #0E3192;
+    background: white;
+    cursor: pointer;
+    font-size: 15px; /* Slightly smaller text */
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Default Hover Effect */
+button:hover {
+    background: #ddd;
+}
+
+/* ✅ Active Button Colors */
+button.active {
+    color: white !important;
+    transform: scale(1.03);
+}
+
+/* Floor-Specific Active Button Colors */
+button[data-floor="-2"].active { background: #2D3F3E; } /* Black */
+button[data-floor="0"].active { background: #000000; } /* Black */
+button[data-floor="2"].active { background: #E888B7; } /* Pink */
+button[data-floor="3"].active { background: #618E3F; } /* Green */
+button[data-floor="4"].active { background: #2D54A1; } /* Blue */
+button[data-floor="5"].active { background: #B6373D; } /* Red */
+button[data-floor="6"].active { background: #764695; } /* Purple */
+button[data-floor="7"].active { background: #96D6D8; } /* Cyan */
+button[data-floor="8"].active { background: #F08211; } /* Orange */
+button[data-floor="9"].active { background: #FFD022; } /* Yellow */
 
 /* ✅ Spacing for Floor Map */
 .map-container {
@@ -293,21 +325,4 @@ button[data-floor="9"].active { background: #FFD022; }
     button:hover {
         background: #555;
     }
-
-    .movable {
-    position: absolute;
-    user-select: none;
-    transition: transform 0.2s ease-in-out;
-}
-
-.resize-handle {
-    width: 10px;
-    height: 10px;
-    background: red;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    cursor: nwse-resize;
-    border-radius: 50%;
-}
 }

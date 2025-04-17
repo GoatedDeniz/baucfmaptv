@@ -14,40 +14,42 @@
 </header>
 
     <!-- Search Bar with Auto-Suggestions -->
-    <div class="search-container movable">
-        <input type="text" id="searchInput" class="movable" placeholder="🔍 Search for a classroom" autocomplete="off">
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="🔍 Search for a classroom" autocomplete="off">
         <ul id="suggestions"></ul>
     </div>
 
     <!-- Floor Selection Menu -->
-    <div class="floor-selector movable">
-        <button class="movable" data-floor="9" onclick="showFloor(9)">Floor 9</button>
-        <button class="movable" data-floor="8" onclick="showFloor(8)">Floor 8</button>
-        <button class="movable" data-floor="7" onclick="showFloor(7)">Floor 7</button>
-        <button class="movable" data-floor="6" onclick="showFloor(6)">Floor 6</button>
-        <button class="movable" data-floor="5" onclick="showFloor(5)">Floor 5</button>
-        <button class="movable" data-floor="4" onclick="showFloor(4)">Floor 4</button>
-        <button class="movable" data-floor="3" onclick="showFloor(3)">Floor 3</button>
-        <button class="movable" data-floor="2" onclick="showFloor(2)">Floor 2</button>
-        <button class="movable" data-floor="0" onclick="showFloor(0)">Floor 0</button>
-        <button class="movable" data-floor="-2" onclick="showFloor(-2)">Floor -2</button>
+    <div class="floor-selector">
+        <button data-floor="9" onclick="showFloor(9)">Floor 9</button>
+        <button data-floor="8" onclick="showFloor(8)">Floor 8</button>
+        <button data-floor="7" onclick="showFloor(7)">Floor 7</button>
+        <button data-floor="6" onclick="showFloor(6)">Floor 6</button>
+        <button data-floor="5" onclick="showFloor(5)">Floor 5</button>
+        <button data-floor="4" onclick="showFloor(4)">Floor 4</button>
+        <button data-floor="3" onclick="showFloor(3)">Floor 3</button>
+        <button data-floor="2" onclick="showFloor(2)">Floor 2</button>
+        <button data-floor="0" onclick="showFloor(0)">Floor 0</button>
+        <button data-floor="-2" onclick="showFloor(-2)">Floor -2</button>
     </div>
 
     <!-- Floor Map Display -->
-    <div class="map-container movable">
-        <img id="floorMap" class="movable" src="https://raw.githubusercontent.com/GoatedDeniz/baucfmap/main/floor-0.svg" alt="Floor Map" width="800" height="600">
+    <div class="map-container">
+        <img id="floorMap" src="https://raw.githubusercontent.com/GoatedDeniz/baucfmap/main/floor-0.svg" alt="Floor Map" width="800" height="600">
     </div>
 </body>
 <!-- Info Button Container -->
-<div class="info-container movable" onclick="toggleInfo()">
+<div class="info-container" onclick="toggleInfo()">
     <img id="infoIcon" src="info.svg" alt="Info Icon" class="info-icon">
     <div id="infoText" class="info-text">
         This website was developed by:<br>
-        - John Doe (Lead Developer)<br>
-        - Jane Smith (UX Designer)<br>
-        - Alex Brown (Data Integration)<br>
-        - Emily White (QA & Testing)<br>
-        - Special thanks to the BAU Faculty Team.
+        - Deniz Hasman (Lead Developer, Designer)<br>
+        - Aslı İrem Zengin (Developer, Lead Designer)<br>
+        - Metin Doygun (Designer)<br>
+        - Nehir Kaçağan (Designer)<br>
+        - Kayra Sabancı (Designer)<br>
+        - Zeynep Süyür (Designer)<br>
+        - Murat Durusoy (Instructor)<br>
     </div>
 </div>
 </html>
